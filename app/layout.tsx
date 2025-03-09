@@ -9,7 +9,7 @@ import { redirect } from "next/navigation";
 import { ThemeProvider } from "./components/theme-provider";
 import { useTheme } from "next-themes";
 import FireFliesBackground from "@/components/threejs/FireFliesBackground";
-
+import bg from "@/assets/background/bg.png";
 export const metadata: Metadata = {
   title: "Sahil - Code",
   description: "Portfolio - Sahil",
@@ -21,6 +21,12 @@ export const viewport: Viewport = {
   maximumScale: 1,
   viewportFit: "cover",
   userScalable: false,
+};
+
+const style = {
+  backgroundImage: `url(${bg.src})`,
+  width: "100%",
+  height: "100%",
 };
 
 export default function RootLayout({
@@ -35,11 +41,12 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
-        <script>VANTA.WAVES('#main-body')</script>
       </head>
-      <body id="main-body" className="h-full select-auto color-scheme">
+      <body
+        id="main-body"
+        className="h-full select-auto color-scheme bg-[#d9cdbd]"
+        style={style}
+      >
         <ThemeProvider attribute="class" enableSystem disableTransitionOnChange>
           <div>
             <Navbar />

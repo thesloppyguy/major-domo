@@ -39,10 +39,10 @@ const Navbar = () => {
   if (!NavData.navMain.length) return <></>;
   return (
     <>
-      <div className="w-xl p-1 absolute top-0 left-0 right-0 m-auto">
-        <FrostedGlass className="flex w-full justify-between">
+      <div className="p-1 absolute top-0 left-0 right-0 m-auto">
+        <FrostedGlass className="flex w-full justify-between" color="[#FBEFE1]">
           {(NavData.navMain as NavItems[]).map((item: NavItems) => (
-            <Tooltip>
+            <Tooltip key={item.title}>
               <TooltipTrigger asChild>
                 <Button
                   variant="ghost"
@@ -66,7 +66,7 @@ const Navbar = () => {
           ))}
         </FrostedGlass>
       </div>
-      <div className="flex flex-col w-xl absolute bottom-0 left-0 right-0 m-auto p-1">
+      <div className="flex flex-col absolute bottom-0 left-0 right-0 m-auto p-1">
         <motion.div
           initial={{ y: 0 }}
           animate={{ y: [0, 10, 0] }}
@@ -90,14 +90,14 @@ const Navbar = () => {
             }
           />
         </motion.div>
-        <FrostedGlass className="flex w-full justify-between">
+        <FrostedGlass className="flex w-full justify-between" color="[#FBEFE1]">
           <div className="p-1 block sm:hidden">
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
                   variant="link"
                   size="icon"
-                  className="cursor-pointer bg-black rounded-full"
+                  className="cursor-pointer bg-[#8D9786] rounded-full border-[1px]"
                 >
                   <ChevronLeft />
                 </Button>
@@ -191,7 +191,7 @@ const Navbar = () => {
                 <Button
                   variant="link"
                   size="icon"
-                  className="cursor-pointer bg-black rounded-full"
+                  className="cursor-pointer bg-[#8D9786] rounded-full border-[1px]"
                 >
                   <ChevronRight />
                 </Button>
