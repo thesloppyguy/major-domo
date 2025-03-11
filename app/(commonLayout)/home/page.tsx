@@ -15,7 +15,7 @@ export default function Home() {
             <div className="w-full max-w-[600px] h-full max-h-[320px]">
               <Name />
             </div>
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{
@@ -28,12 +28,10 @@ export default function Home() {
                 color="[#AD8665]"
                 className="text-justify lg:text-[18px] p-2"
               >
-                {/* <div className="w-[80%] text-black p-4 text-justify rounded-[14px] bg-[#AD8665] lg:text-[22px]"> */}
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor,
                 est cum! Numquam quae modi voluptate maxime, autem ea rerum
                 corporis reprehenderit eius esse ab amet veniam eaque rem non.
                 Dolore.
-                {/* </div> */}
               </FrostedGlass>
               <div className="flex flex-row flex-grow h-full gap-8">
                 <div className="flex w-full h-full p-2 gap-8 justify-center max-w-[50px] max-h-[200px]">
@@ -59,10 +57,10 @@ export default function Home() {
                   </motion.div>
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
@@ -73,12 +71,10 @@ export default function Home() {
         >
           <div className="w-[90%]">
             <FrostedGlass color="[#AD8665]" className="text-justify p-2">
-              {/* <div className="w-[80%] items-center text-justify p-2 rounded-[14px]"> */}
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor,
               est cum! Numquam quae modi voluptate maxime, autem ea rerum
               corporis reprehenderit eius esse ab amet veniam eaque rem non.
               Dolore.
-              {/* </div> */}
             </FrostedGlass>
           </div>
           <div className="flex flex-col h-full w-max-[50px] flex-grow rounded-[14px] bg-[#8D9786]">
@@ -95,7 +91,7 @@ export default function Home() {
               <QrCodeIcon />
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
       </Background>
     </>
   );

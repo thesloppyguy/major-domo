@@ -1,5 +1,12 @@
-import Image from "next/image";
+import SVGPathWithElements from "@/components/base/SVGPathElements";
+import Background from "./background";
 
 export default function Home() {
-  return <></>;
+  return (
+    <>
+     <Background>
+      <></>
+     </Background>
+    </>
+  );
 }

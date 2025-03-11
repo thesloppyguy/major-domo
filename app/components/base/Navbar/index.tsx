@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { motion, useAnimation } from "framer-motion";
 import { NavData } from "@/constants/index";
@@ -33,6 +33,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+
+
 const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();

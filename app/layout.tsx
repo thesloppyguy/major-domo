@@ -1,14 +1,9 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import Sidebar from "@/components/base/Sidebar";
 import Navbar from "@/components/base/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import type { Viewport } from "next";
 import "./globals.css";
-import { redirect } from "next/navigation";
 import { ThemeProvider } from "./components/theme-provider";
-import { useTheme } from "next-themes";
-import FireFliesBackground from "@/components/threejs/FireFliesBackground";
 import bg from "@/assets/background/bg.png";
 export const metadata: Metadata = {
   title: "Sahil - Code",

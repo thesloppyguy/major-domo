@@ -1,7 +1,7 @@
 "use client";
 import React, { Children } from "react";
 import * as motion from "motion/react-client";
-import ThreeLines from "./ThreeLines";
+import ThreeLines from "@/components/base/ThreeLines";
 
 const circle = {
   width: 300,
@@ -44,12 +44,13 @@ const Background = ({ children, ...props }: { children: any }) => {
   return (
     <div className="w-[100vw] h-[100vh]">
       <div className="relative w-full h-full">
-        <div className="absolute right-0 top-[50%] hidden sm:block">
+        {/* <div className="absolute right-0 top-[50%] hidden sm:block">
           <motion.div
             style={box1}
             initial={{ width: "0px", x: "720px" }}
             animate={{ width: "720px", x: 0 }}
             transition={{ duration: 1, origin: 1 }}
+            exit={{ x: "720px", opacity: 0 }}
           />
         </div>
         <div className="absolute right-0 top-[70%]">
@@ -58,6 +59,7 @@ const Background = ({ children, ...props }: { children: any }) => {
             initial={{ width: "0px", x: "900px" }}
             animate={{ width: "900px", x: 0 }}
             transition={{ duration: 2, origin: 1 }}
+            exit={{ x: "900px", opacity: 0 }}
           />
         </div>
         <div className="absolute right-0 top-[80%]">
@@ -66,6 +68,7 @@ const Background = ({ children, ...props }: { children: any }) => {
             initial={{ width: "0px", x: "1080px" }}
             animate={{ width: "1080px", x: 0 }}
             transition={{ duration: 3, origin: 1 }}
+            exit={{ x: "1080px", opacity: 0 }}
           />
         </div>
         <div className="absolute hidden sm:block left-[15%] bottom-0">
@@ -74,6 +77,7 @@ const Background = ({ children, ...props }: { children: any }) => {
             initial={{ height: "0px", y: "700px" }}
             animate={{ height: "700px", y: 0 }}
             transition={{ duration: 1, origin: 1 }}
+            exit={{ y: "700px", opacity: 0 }}
             className="border-l-[14px] border-r-[14px] border-t-[14px] border-[#7E7175] rounded-t-[15px]"
           >
             <div className="flex flex-col w-full h-full p-4 gap-4">
@@ -89,6 +93,7 @@ const Background = ({ children, ...props }: { children: any }) => {
             animate={{ height: "450px", y: 0 }}
             transition={{ duration: 2, origin: 1 }}
             className="p-10"
+            exit={{ y: "450px", opacity: 0 }}
           >
             <div className="flex flex-col w-full h-full p-4 gap-4 justify-center items-center">
               <img
@@ -141,6 +146,7 @@ const Background = ({ children, ...props }: { children: any }) => {
             initial={{ x: "-100vw", width: 0 }}
             animate={{ width: "100vw", x: 0 }}
             transition={{ duration: 1, origin: 1 }}
+            exit={{ x: "200vw̦", opacity: 0 }}
           >
             <ThreeLines
               orientation={"horizontal"}
@@ -149,7 +155,7 @@ const Background = ({ children, ...props }: { children: any }) => {
               gap={32}
             />
           </motion.div>
-        </div>
+        </div> */}
         <div className="relative w-full h-full">{children}</div>
       </div>
     </div>
