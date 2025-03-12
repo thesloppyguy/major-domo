@@ -1,4 +1,5 @@
 import { LucideIcon } from "lucide-react";
+import { MotionValue } from "framer-motion";
 
 export type NavItems ={
     title: string;
@@ -7,3 +8,7 @@ export type NavItems ={
     isActive: boolean;
     items: any[];
 } 
+
+export type PageProps = {
+    scrollYProgress: MotionValue<number>
+}

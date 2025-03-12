@@ -2,6 +2,10 @@
 import React, { Children } from "react";
 import * as motion from "motion/react-client";
 import ThreeLines from "@/components/base/ThreeLines";
+import { PageProps } from "@/types";
+import { useAnimation, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { useInView } from "react-intersection-observer";
 
 const circle = {
   width: 300,
@@ -40,44 +44,73 @@ const box5 = {
   width: 500,
   height: 900,
 };
-const Background = ({ children, ...props }: { children: any }) => {
+
+interface BackgroundProps extends PageProps {
+  children: any;
+}
+
+const Background = ({
+  children,
+  scrollYProgress,
+  ...props
+}: BackgroundProps) => {
+  const controls = useAnimation();
+  const x = useTransform(scrollYProgress, [0, 1], [0, 720]);
+  const width = useTransform(scrollYProgress, [0, 1], ["720px", "0px"]);
+  // useEffect(() => {
+  //   controls.start({ opacity: 1, scale: 1, transition: { duration: 1 } });
+  // }, [controls]);
+
   return (
-    <div className="w-[100vw] h-[100vh]">
+    <motion.div
+      // ref={ref}
+      // animate={controls}
+      // initial="hidden"
+      // variants={{
+      //   hidden: { opacity: 0, y: 50, transition: { duration: 0.5 } },
+      //   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+      // }}
+      className="w-[100vw] h-[100vh]"
+    >
       <div className="relative w-full h-full">
-        {/* <div className="absolute right-0 top-[50%] hidden sm:block">
-          <motion.div
-            style={box1}
-            initial={{ width: "0px", x: "720px" }}
-            animate={{ width: "720px", x: 0 }}
-            transition={{ duration: 1, origin: 1 }}
-            exit={{ x: "720px", opacity: 0 }}
-          />
-        </div>
-        <div className="absolute right-0 top-[70%]">
-          <motion.div
-            style={box2}
-            initial={{ width: "0px", x: "900px" }}
-            animate={{ width: "900px", x: 0 }}
-            transition={{ duration: 2, origin: 1 }}
-            exit={{ x: "900px", opacity: 0 }}
-          />
-        </div>
-        <div className="absolute right-0 top-[80%]">
-          <motion.div
-            style={box3}
-            initial={{ width: "0px", x: "1080px" }}
-            animate={{ width: "1080px", x: 0 }}
-            transition={{ duration: 3, origin: 1 }}
-            exit={{ x: "1080px", opacity: 0 }}
-          />
-        </div>
+        {/* <motion.div
+          className="absolute right-0 top-[50%] hidden sm:block"
+          style={{ ...box1, x, width }}
+          transition={{ duration: 1 }}
+          initial={{ width: "0px", x: "720px" }}
+          animate={{ width: "720px", x: 0 }}
+          transition={{ duration: 1, origin: 1 }}
+          viewport={{ once: false }}
+        /> */}
+        <motion.div
+          className="absolute right-0 top-[50%] hidden sm:block"
+          initial={{ opacity: 0, scale: 0.8 }} // On load: Start invisible & scaled down
+          animate={controls} // Play load animation
+          style={{ x, width }} // Apply scroll-based transformations
+        />
+        <motion.div
+          className="absolute right-0 top-[70%]"
+          style={box2}
+          initial={{ width: "0px", x: "900px" }}
+          animate={{ width: "900px", x: 0 }}
+          transition={{ duration: 2, origin: 1 }}
+          viewport={{ once: true }}
+        />
+        <motion.div
+          className="absolute right-0 top-[80%]"
+          style={box3}
+          initial={{ width: "0px", x: "1080px" }}
+          animate={{ width: "1080px", x: 0 }}
+          transition={{ duration: 3, origin: 1 }}
+          viewport={{ once: true }}
+        />
         <div className="absolute hidden sm:block left-[15%] bottom-0">
           <motion.div
             style={box4}
             initial={{ height: "0px", y: "700px" }}
             animate={{ height: "700px", y: 0 }}
             transition={{ duration: 1, origin: 1 }}
-            exit={{ y: "700px", opacity: 0 }}
+            viewport={{ once: true }}
             className="border-l-[14px] border-r-[14px] border-t-[14px] border-[#7E7175] rounded-t-[15px]"
           >
             <div className="flex flex-col w-full h-full p-4 gap-4">
@@ -93,7 +126,7 @@ const Background = ({ children, ...props }: { children: any }) => {
             animate={{ height: "450px", y: 0 }}
             transition={{ duration: 2, origin: 1 }}
             className="p-10"
-            exit={{ y: "450px", opacity: 0 }}
+            viewport={{ once: true }}
           >
             <div className="flex flex-col w-full h-full p-4 gap-4 justify-center items-center">
               <img
@@ -108,11 +141,13 @@ const Background = ({ children, ...props }: { children: any }) => {
             initial={{ y: -600, width: 0 }}
             animate={{ width: 300, y: "2%" }}
             transition={{ duration: 1, origin: 1 }}
+            viewport={{ once: true }}
           >
             <motion.div
               style={circle}
               initial={{ y: 0 }}
               animate={{ borderRadius: [300, 10] }}
+              viewport={{ once: true }}
               transition={{
                 duration: 4,
                 delay: 10,
@@ -132,6 +167,7 @@ const Background = ({ children, ...props }: { children: any }) => {
             initial={{ y: "-100vh", height: 0 }}
             animate={{ height: "100vh", y: "0" }}
             transition={{ duration: 1, origin: 1 }}
+            viewport={{ once: true }}
           >
             <ThreeLines
               orientation={"vertical"}
@@ -146,7 +182,7 @@ const Background = ({ children, ...props }: { children: any }) => {
             initial={{ x: "-100vw", width: 0 }}
             animate={{ width: "100vw", x: 0 }}
             transition={{ duration: 1, origin: 1 }}
-            exit={{ x: "200vw̦", opacity: 0 }}
+            viewport={{ once: true }}
           >
             <ThreeLines
               orientation={"horizontal"}
@@ -155,10 +191,10 @@ const Background = ({ children, ...props }: { children: any }) => {
               gap={32}
             />
           </motion.div>
-        </div> */}
+        </div>
         <div className="relative w-full h-full">{children}</div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -2,7 +2,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import "./style.css";
-const transition = { duration: 4, yoyo: Infinity, ease: "easeInOut" };
 
 const paths = [
   "M1575 2214 c-313 -25 -472 -69 -660 -184 -90 -55 -202 -168 -242 -246 -43 -81 -128 -338 -148 -446 -8 -43 -13 -48 -125 -123 -186 -126 -288 -230 -296 -302 -7 -63 58 -133 109 -118 52 16 128 59 161 93 47 46 121 197 141 288 18 80 20 83 57 106 111 71 316 152 491 194 15 3 27 10 27 15 0 25 -331 -72 -458 -135 -77 -38 -92 -42 -92 -25 0 5 4 8 8 5 5 -3 17 27 26 66 32 132 93 302 134 372 43 74 135 174 191 208 20 12 38 24 41 27 3 4 43 25 90 48 190 94 364 125 782 138 165 5 210 -2 146 -24 -49 -17 -27 -23 31 -8 61 16 81 31 63 50 -17 16 -268 17 -477 1z m-1075 -988 c0 -22 -44 -133 -55 -139 -8 -4 -15 -16 -15 -26 0 -58 -105 -185 -177 -213 -33 -13 -46 -13 -65 -4 -19 10 -23 19 -22 58 0 71 39 118 189 237 6 4 24 16 40 26 17 11 43 29 58 42 26 21 47 29 47 19z",
@@ -17,7 +16,7 @@ const Name = () => {
       viewBox="0 0 3000 2500"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-auto max-w-[600px]"
+      className="w-full h-screen"
     >
       <g transform="scale(1, -1) translate(0, -2500)">
         {paths.map((d, index) => (
@@ -26,15 +25,16 @@ const Name = () => {
             d={d}
             stroke="#A59681"
             strokeWidth="16"
-            fill="transparent"
             initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 1 }}
+            whileInView={{ pathLength: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            fill="transparent"
             transition={{
               duration: 2,
               ease: "easeInOut",
               delay: index * 0.5,
             }}
-            className="stroke-black sm:stroke-[#A59681] stroke-[20px] sm:stroke-[16px]"
+            className="stroke-[#A59681] stroke-[20px]"
           />
         ))}
       </g>
