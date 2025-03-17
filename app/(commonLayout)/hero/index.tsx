@@ -6,11 +6,12 @@ const Hero = ({
 }: {
   scrollYProgress: MotionValue<number>;
 }) => {
-  const scale = useTransform(scrollYProgress, [0, 0.25], [1, 0.8]);
-  const rotate = useTransform(scrollYProgress, [0, 0.25], [0, -5]);
+  const scale = useTransform(scrollYProgress, [0, 0.25], [1, 0.85]);
+  const opacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
+
   return (
     <motion.div
-      style={{ scale, rotate }}
+      style={{ scale, opacity }}
       className="sticky top-0 h-screen flex text-[2vw] items-center justify-center bg-amber-100"
     >
       <h2 className="max-w-[45%] text-center leading-none text-red-500">

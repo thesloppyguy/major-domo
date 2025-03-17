@@ -33,11 +33,11 @@ export default function Home() {
         <Skills scrollYProgress={scrollYProgress} />
         <Projects scrollYProgress={scrollYProgress} />
       </main>
-      <footer>
+      {/* <footer>
         <StickyFooter>
           <Footer />
         </StickyFooter>
-      </footer>
+      </footer> */}
     </>
   );
 }

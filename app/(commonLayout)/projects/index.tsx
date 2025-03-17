@@ -6,11 +6,16 @@ const Projects = ({
 }: {
   scrollYProgress: MotionValue<number>;
 }) => {
-  const scale = useTransform(scrollYProgress, [0.7, 0.85, 1], [0.8, 1, 1]);
-  const rotate = useTransform(scrollYProgress, [0.7, 0.85, 1], [5, 0, 0]);
+  const scale = useTransform(scrollYProgress, [0.7, 0.85, 1], [0.85, 1, 1]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [0.7, 0.775, 0.85],
+    [0.8, 1, 1]
+  );
+
   return (
     <motion.div
-      style={{ scale, rotate }}
+      style={{ scale, opacity }}
       className="sticky top-0 h-screen flex text-[2vw] items-center justify-center bg-blue-700"
     >
       <h2 className="max-w-[45%] text-center leading-none text-red-500">
