@@ -1,7 +1,7 @@
 import React from "react";
 
-const index = () => {
-  return <div>index</div>;
+const SkillsSection = () => {
+  return <div className="bg-blue-400 h-screen">SkillsSection</div>;
 };
 
-export default index;
+export default SkillsSection;

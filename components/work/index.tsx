@@ -1,7 +1,7 @@
 import React from "react";
 
-const index = () => {
-  return <div>index</div>;
+const WorkSection = () => {
+  return <div className="bg-blue-200 h-screen">WorkSection</div>;
 };
 
-export default index;
+export default WorkSection;
