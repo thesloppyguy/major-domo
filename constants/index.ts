@@ -1,6 +1,13 @@
-"use client"
+"use client";
 
-import { BriefcaseBusiness, File, Home, Library, Paperclip, SquareTerminal } from "lucide-react";
+import {
+  BriefcaseBusiness,
+  File,
+  Home,
+  Library,
+  Paperclip,
+  SquareTerminal,
+} from "lucide-react";
 
 export const NavData = {
   user: {
@@ -83,7 +90,7 @@ export const NavData = {
         {
           title: "Content",
           url: "#content",
-        }
+        },
       ],
     },
     {

@@ -1,14 +1,14 @@
 "use client";
 import Lenis from "lenis";
 import { useEffect, useRef } from "react";
-import StickyFooter from "./components/base/StickyFooter";
-import Footer from "./(commonLayout)/Footer";
-import Hero from "./(commonLayout)/hero";
-import Experience from "./(commonLayout)/experience";
-import Skills from "./(commonLayout)/skills";
-import Projects from "./(commonLayout)/projects";
-import { useScroll, useTransform, motion } from "framer-motion";
-
+import { useScroll } from "framer-motion";
+import HomeSection from "../components/home";
+import AboutSection from "../components/about";
+import ExperienceSection from "../components/work";
+import ProjectsSection from "../components/projects";
+import SkillsSection from "../components/skills";
+import ContactSection from "../components/contact";
+import FooterSection from "../components/footer";
 export default function Home() {
   const container = useRef(null);
 
@@ -27,17 +27,17 @@ export default function Home() {
 
   return (
     <>
-      <main ref={container} className="relative h-[400vh]">
-        <Hero scrollYProgress={scrollYProgress} />
-        <Experience scrollYProgress={scrollYProgress} />
-        <Skills scrollYProgress={scrollYProgress} />
-        <Projects scrollYProgress={scrollYProgress} />
+      <main ref={container} className="w-full bg-black overflow-x-hidden">
+        <HomeSection />
+        <AboutSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <SkillsSection />
+        <ContactSection />
       </main>
-      {/* <footer>
-        <StickyFooter>
-          <Footer />
-        </StickyFooter>
-      </footer> */}
+      <footer className="w-full bg-black">
+        <FooterSection />
+      </footer>
     </>
   );
 }
