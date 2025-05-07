@@ -1,22 +1,23 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import SlideUp from "../base/slideUp";
 // import backgroundImage from "../../assets/background/Man Sitting on Rooftop.jpg";
-import backgroundImage from "../../assets/background/Face.png";
+import backgroundImage2 from "../../assets/background/Face.png";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 const HomeSection = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100 relative">
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-1">
         <Image
-          src={backgroundImage}
+          src={backgroundImage2}
           alt="Background"
           layout="fill"
-          objectFit="fit"
+          objectFit="contain"
           priority
         />
-        <div className="absolute inset-0 bg-black/10" />
       </div>
       {/* <div className="relative rotate-[-10deg]">
         <svg
