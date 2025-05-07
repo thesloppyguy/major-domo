@@ -5,14 +5,16 @@ const ProjectsSection = () => {
   const images = [
     "https://images.unsplash.com/photo-1607385404764-380a5e06c7fe",
     "https://images.unsplash.com/photo-1570086625846-f33f679eb4f5",
-    "https://images.unsplash.com/photo-1682687220063-4742bd7fd538",
-    "https://images.unsplash.com/photo-1682687220067-dced0a2c8e44",
-    "https://images.unsplash.com/photo-1682687220063-4742bd7fd538",
-    "https://images.unsplash.com/photo-1682687220067-dced0a2c8e44",
+    "https://images.unsplash.com/photo-1627645835237-0743e52b991f",
+    "https://images.unsplash.com/photo-1648565496992-d1216d628508",
+    "https://images.unsplash.com/photo-1659117656969-b19d9a95a69c",
+    "https://images.unsplash.com/photo-1714251638631-3f5f92585617",
+    "https://images.unsplash.com/photo-1544273573-67fe0493b0ef",
+    "https://images.unsplash.com/photo-1613057389222-5c429f4ec162",
   ];
 
   return (
-    <div className="w-full overflow-hidden py-8 bg-blue-300">
+    <div className="w-full overflow-hidden py-8 bg-blue-300 h-screen align-center justify-center">
       <div className="embla">
         <div className="embla__container flex">
           {images.map((image, index) => (

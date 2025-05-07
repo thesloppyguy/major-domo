@@ -39,10 +39,12 @@ Le Diff
 Inventory Manager
 Real-time Trivia Game Platform
 Document Parsing Platform
+
 Personal Media Streaming Server
 Music Recognition and Radio Streaming App
 OneLoki
 ATS
+
 Other
 
     - Payment Gateway Integrations

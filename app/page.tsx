@@ -10,7 +10,7 @@ import SkillsSection from "../components/skills";
 import ContactSection from "../components/contact";
 import FooterSection from "../components/footer";
 import HeaderSection from "../components/header";
-import FloatingBubble from "../components/FloatingBubble";
+// import FloatingBubble from "../components/FloatingBubble";
 import ChatWindow from "../components/ChatWindow";
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,21 +45,21 @@ export default function Home() {
     <>
       {/* <FloatingBubble x={mousePosition.x} y={mousePosition.y} /> */}
       <ChatWindow handleToggle={handleToggle} isOpen={isOpen} />
-      <header className="w-full bg-blue-500 z-50 sticky top-0">
-        <HeaderSection handleToggle={handleToggle} />
-      </header>
       <main
         ref={container}
-        className="w-full bg-black overflow-x-hidden overflow-y-auto"
+        className="w-full bg-blue-900 overflow-x-hidden overflow-y-auto"
       >
+        <header className="w-full z-50 fixed top-0 bg-gradient-to-b from-black/30 to-transparent">
+          <HeaderSection handleToggle={handleToggle} />
+        </header>
         <HomeSection />
         <AboutSection />
-        <ExperienceSection />
-        <ProjectsSection />
-        <SkillsSection />
-        <ContactSection />
+        {/* <ExperienceSection /> */}
+        {/* <ProjectsSection /> */}
+        {/* <SkillsSection /> */}
+        {/* <ContactSection /> */}
       </main>
-      <footer className="w-full bg-blue-500 sticky top-0">
+      <footer className="w-full bg-black sticky top-0">
         <FooterSection />
       </footer>
     </>
