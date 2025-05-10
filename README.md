@@ -51,3 +51,54 @@ Other
     - Github Workflow Integration
     - Unit Test Scripting
     - UI Fixes and Component Enhancements
+
+Add Image Loaded
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
+
+Python
+C
+C++
+JavaScript
+TypeScript
+SQL
+HTML/CSS
+Dart
+
+React
+Next.js
+Node.js
+Express
+Flask
+FastAPI
+Django
+React Native
+Flutter
+
+MongoDB
+PostgreSQL
+MySQL
+SQLite
+Elasticsearch (ELK Stack)
+Redis
+
+Git
+CI/CD
+Workflows
+Docker
+AWS (Amazon Web Services)
+GCP (Google Cloud Platform)
+GitHub Actions
+Kubernetes
+
+RabbitMQ
+Celery
+
+LangChain
+LangGraph
+LlamaIndex
+
+Stripe
+Selenium
+WebRTC
