@@ -4,7 +4,10 @@ import Navbar from "./navbar";
 import SlideUp from "../base/slideUp";
 const HeaderSection = ({ handleToggle }: { handleToggle: () => void }) => {
   return (
-    <header className="w-full z-50 fixed top-0 bg-gradient-to-b from-black/30 to-transparent font-sans">
+    <header
+      style={{ padding: "10px" }}
+      className="w-full z-50 fixed top-0 bg-gradient-to-b from-black/30 to-transparent font-sans"
+    >
       <div className="flex justify-between p-4 text-center items-center">
         <div className="text-white">
           <div className="text-xl font-bold text-white text-left">SAHIL</div>

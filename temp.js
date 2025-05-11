@@ -1,139 +1,130 @@
-const canvasEl = document.querySelector("#gooey-overlay");
-
-const devicePixelRatio = Math.min(window.devicePixelRatio, 2);
-
-const params = {
-    scrollProgress: 0,
-    colWidth: 1.0,
-    speed: .2,
-    scale: .25,
-    seed: .231,
-    color: [.235, .635, .062],
-    pageColor: "#fff0e5"
-}
-
-let st, uniforms;
-const gl = initShader();
-document.body.style.backgroundColor = params.pageColor;
-
-st = gsap.timeline({
-    scrollTrigger: {
-        trigger: ".page",
-        start: "0% 0%",
-        end: "100% 100%",
-        scrub: true,
-
-        // start: "0% 0%",
-        // end: "100% 100%",
-        // toggleActions: "play pause resume reverse",
-
-        // markers: true,
-    },
-})
-    .to(params, {
-       scrollProgress: 1
-    }, 0)
-	 .progress(0)
+var myPaletteContainer = document.getElementById("myPaletteContainer");
+var myPalette = document.getElementById("myPalette");
+var myCanvasContainer = document.getElementById("myCanvasContainer");
+var myCanvas = document.getElementById("myCanvas");
+var tween = null;
+var progressStart = 0;
+var totalRects = 16; // number of rectangles --  includes repeats
+var uniqueRects = totalRects/2;
+var rectWidth = 600;
+var rectsWidth = rectWidth*totalRects/2;
+var animTimePerPixel = 0.0125/8;
+var firstRectOffsetX = rectWidth/2; 
+var width = window.innerWidth;
+var fillRectX = width/2 - firstRectOffsetX;
+var left = fillRectX - rectsWidth;
 
 
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
-render();
-
-gsap.set(".page", {
-    opacity: 1
-})
-
-
-function initShader() {
-    const vsSource = document.getElementById("vertShader").innerHTML;
-    const fsSource = document.getElementById("fragShader").innerHTML;
-
-    const gl = canvasEl.getContext("webgl") || canvasEl.getContext("experimental-webgl");
-
-    if (!gl) {
-        alert("WebGL is not supported by your browser.");
-    }
-
-    function createShader(gl, sourceCode, type) {
-        const shader = gl.createShader(type);
-        gl.shaderSource(shader, sourceCode);
-        gl.compileShader(shader);
-
-        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-            console.error("An error occurred compiling the shaders: " + gl.getShaderInfoLog(shader));
-            gl.deleteShader(shader);
-            return null;
+var c = function() {
+    return({
+        log: function(msg) {
+          consoleDiv = document.getElementById('console');
+          para = document.createElement('p');
+          text = document.createTextNode(msg);
+          para.appendChild(text);
+          consoleDiv.appendChild(para);
         }
+    });
+}();
 
-        return shader;
-    }
+function start() {
+  var rectHeight = 565;
+  var verticalBorder = 17;
+  var rectsHeight = rectHeight + verticalBorder*2;
+  
+  $('#myPaletteContainer').css('width', width)
+                          .css('height', rectsHeight);
 
-    const vertexShader = createShader(gl, vsSource, gl.VERTEX_SHADER);
-    const fragmentShader = createShader(gl, fsSource, gl.FRAGMENT_SHADER);
+  $('#myPalette').css('width', 2*rectsWidth)
+                 .css('height', rectsHeight)
+                 .css('left', left);
 
-    function createShaderProgram(gl, vertexShader, fragmentShader) {
-        const program = gl.createProgram();
-        gl.attachShader(program, vertexShader);
-        gl.attachShader(program, fragmentShader);
-        gl.linkProgram(program);
+  $('#myCanvas').css('width', 2*rectsWidth)
+                .css('height', rectsHeight);
 
-        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-            console.error("Unable to initialize the shader program: " + gl.getProgramInfoLog(program));
-            return null;
-        }
+  $('#myCanvas')[0].width = 2*rectsWidth;
+  $('#myCanvas')[0].height = rectsHeight;
+  
+  var context = myCanvas.getContext("2d");
 
-        return program;
-    }
+	context.font="40px Georgia";
+	context.textAlign="center";
 
-    const shaderProgram = createShaderProgram(gl, vertexShader, fragmentShader);
-    uniforms = getUniforms(shaderProgram);
+	for (var index = 0; index < totalRects; index++) {
+		context.fillStyle = "#FF0000"; // red
+		context.fillRect(index*rectWidth, verticalBorder, rectWidth, rectHeight);
+		context.rect(index*rectWidth, verticalBorder, rectWidth, rectHeight);
+		context.stroke();
+		context.fillStyle = "#000000"; // black
+    context.fillText(String(index%uniqueRects),index*rectWidth + rectWidth/2,rectsHeight/2);
+	}
 
-    function getUniforms(program) {
-        let uniforms = [];
-        let uniformCount = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
-        for (let i = 0; i < uniformCount; i++) {
-            let uniformName = gl.getActiveUniform(program, i).name;
-            uniforms[uniformName] = gl.getUniformLocation(program, uniformName);
-        }
-        return uniforms;
-    }
+  startSlideshow();
+} // start()
 
-    const vertices = new Float32Array([-1., -1., 1., -1., -1., 1., 1., 1.]);
-
-    const vertexBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
-
-    gl.useProgram(shaderProgram);
-
-    const positionLocation = gl.getAttribLocation(shaderProgram, "a_position");
-    gl.enableVertexAttribArray(positionLocation);
-
-    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
-
-    gl.uniform1f(uniforms.u_col_width, params.colWidth);
-    gl.uniform1f(uniforms.u_speed, params.speed);
-    gl.uniform1f(uniforms.u_scale, params.scale);
-    gl.uniform1f(uniforms.u_seed, params.seed);
-    gl.uniform3f(uniforms.u_color, params.color[0], params.color[1], params.color[2]);
-
-    return gl;
+function getRectPosition(id) {
+  return rectWidth*id;
 }
 
-function render() {
-    const currentTime = performance.now();
-    gl.uniform1f(uniforms.u_time, currentTime);
-    gl.uniform1f(uniforms.u_scroll_progr, params.scrollProgress);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+function getAnimTimeForSlideshow(startX) {
+  var oldX = 0;
+  if (startX == undefined) {
+    if (tween) {
+      var x = tween.vars.css == undefined ? -rectsWidth : tween.vars.css.x;
+      oldX = tween.progress()*(x - progressStart) + progressStart;
+    }
+  } else {
+    oldX = startX;
+  }
+        
+  var destination = rectsWidth - rectWidth;
+  if (oldX > firstRectOffsetX) {
+    destination = rectsWidth - destination;
+  }
+  var origination = Math.abs(oldX);
+  var rectsWidthDelta = destination - origination;
+  rectsWidthDelta = Math.abs(rectsWidthDelta);
+        
+  var animTime = rectsWidthDelta * animTimePerPixel; // total time for slideshow animation
 
-    requestAnimationFrame(render);
+  return animTime;
+} // getAnimTimeForSlideshow()
+
+function startSlideshow() {
+  var animDelay = 2;
+  var animTime = getAnimTimeForSlideshow();
+  tween = TweenLite.fromTo(".myPalette", animTime, {x:progressStart}, {x:-rectsWidth, delay:animDelay, ease:Linear.easeNone, onUpdate:onSlideshowUpdate});
 }
 
-function resizeCanvas() {
-        canvasEl.width = window.innerWidth * devicePixelRatio;
-        canvasEl.height = window.innerHeight * devicePixelRatio;
-        gl.viewport(0, 0, canvasEl.width, canvasEl.height);
-        gl.uniform2f(uniforms.u_resolution, canvasEl.width, canvasEl.height);
+function stopSlideshow() {
+  tween.pause();
 }
+
+function onSlideshowUpdate() {
+  if (tween && !tween.paused()) {
+    if (tween.vars.css == undefined) {
+      c.log("tween.vars.css is undefined");
+      return;
+    }
+    var rectsWidthOver2 = rectsWidth/2;
+    var progress = tween.progress();
+    var x = tween.vars.css.x;
+    var posx = progress*(x - progressStart) + progressStart;
+
+    if (posx < -rectsWidthOver2) {
+      var animTime = getAnimTimeForSlideshow() + getAnimTimeForSlideshow(0);
+
+      var oldps = progressStart;
+      var delta = Math.abs(-posx - rectsWidthOver2);
+      // reset start position (progressStart) to mirror image of posx about x=0 
+      progressStart = -posx + 2*delta; 
+      c.log("x = " + x + ", progress = " + progress + ", old progressStart = " + oldps + ", progressStart = " + progressStart + ", posx = " + posx + ", delta = " + delta);
+
+      // tween = TweenLite.set(".myPalette", {x:progressStart}).to(".myPalette", {x:-rectsWidth});
+
+      tween = TweenLite.fromTo(".myPalette", animTime, {x:progressStart, rotation:0.01}, {x:-rectsWidth, rotation:0.01, ease:Linear.easeNone, onUpdate:onSlideshowUpdate});
+    } // posx < -rectsWidthOver2
+  } // tween && !tween.paused()
+} // onSlideshowUpdate()
+
+start();

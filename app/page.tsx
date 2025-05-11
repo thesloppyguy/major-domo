@@ -44,10 +44,10 @@ export default function Home() {
       return "";
     } else if (progress < 0.55) {
       return "THE\nJOURNEY\nBEGINS";
-    } else if (progress < 1) {
+    } else if (progress < 0.9) {
       return "ALONG\nTHE\nWAY";
     } else {
-      return "";
+      return "WORK\nDONE\n";
     }
   };
 

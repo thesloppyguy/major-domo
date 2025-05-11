@@ -62,7 +62,9 @@ const SectionName = ({ sectionName }: { sectionName: string }) => {
       });
     }
   }, [sectionName]);
-
+  if (sectionName === "") {
+    return null;
+  }
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center z-1 knewave-regular">
       <div className="text-center z-1">
