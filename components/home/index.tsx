@@ -1,10 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import Image from "next/image";
+import React from "react";
 import backgroundImage2 from "../../assets/background/Man.jpg";
-import useMousePosition from "@/hooks/useMousePosition";
-import { motion } from "motion/react";
-import styles from "./page.module.scss";
 import ParticleText from "../ParticleText";
 
 const HomeSection = () => {

@@ -46,7 +46,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
             transition={{ delay: 0.4 }}
             className="container mx-auto flex flex-col items-center justify-center p-10"
           >
-            <p className="text-white text-xl max-w-2xl text-center">
+            <p className="text-white text-xl max-w-2xl text-center bangers-regular">
               Innovative software engineer with a passion for building
               transformational AI products and scalable systems. Experienced in
               leading end-to-end development of AI solutions, from large

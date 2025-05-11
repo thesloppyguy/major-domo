@@ -69,7 +69,7 @@ const SectionName = ({ sectionName }: { sectionName: string }) => {
         {displayLines.map((line, lineIndex) => (
           <div
             key={lineIndex}
-            className="whitespace-nowrap text-[40px] md:text-[80px] font-bold text-[#f74a53]"
+            className="whitespace-nowrap text-[40px] md:text-[80px] font-bold text-[#e7e5d0]"
           >
             {line.map((letter, index) => (
               <span

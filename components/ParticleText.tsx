@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import {
   Canvas,
@@ -6,7 +7,7 @@ import {
   useLoader,
   useThree,
 } from "@react-three/fiber";
-import { useTexture, Center } from "@react-three/drei";
+import { Center } from "@react-three/drei";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
 import { FontLoader, Font } from "three/examples/jsm/loaders/FontLoader.js";
 import * as THREE from "three";
@@ -50,7 +51,7 @@ interface ParticleTextProps {
 }
 
 const ParticleText: React.FC<ParticleTextProps> = ({
-  text = "SIC\nPARVIS\nMAGNA",
+  text = ".CODE.\n.BUILD.\nREPEAT",
   amount = 1500,
   particleSize = 1,
   particleColor = "#ffffff",

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { animatePageOut } from "@/animations";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+
 const images = [
   "https://images.unsplash.com/photo-1607385404764-380a5e06c7fe",
   "https://images.unsplash.com/photo-1570086625846-f33f679eb4f5",
@@ -15,19 +16,28 @@ const images = [
   "https://images.unsplash.com/photo-1544273573-67fe0493b0ef",
   "https://images.unsplash.com/photo-1613057389222-5c429f4ec162",
 ];
+const animation = { duration: 5000, easing: (t: number) => t };
+
 const ProjectsSection = () => {
   const router = useRouter();
   const [isPaused, setIsPaused] = useState(false);
+  const [currentBgImage, setCurrentBgImage] = useState(images[0]);
 
-  const [sliderRef, instanceRef] = useKeenSlider({
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
-    mode: "free-snap",
+    renderMode: "precision",
+    drag: false,
     slides: {
       perView: "auto",
       spacing: 16,
     },
+    created(s) {
+      s.moveToIdx(5, true, animation);
+    },
+    updated(s) {
+      s.moveToIdx(s.track.details.abs - 5, true, animation);
+    },
   });
-
   useEffect(() => {
     const interval = setInterval(() => {
       if (instanceRef.current && !isPaused) {
@@ -41,13 +51,25 @@ const ProjectsSection = () => {
   return (
     <div
       id="projects"
-      className="w-full overflow-hidden py-8 h-screen flex items-center justify-center"
+      className="w-full overflow-hidden py-20 h-screen flex flex-col items-center justify-center z-2 relative"
     >
+      <div className="absolute inset-0 w-full h-full transition-opacity duration-500">
+        <Image
+          src={currentBgImage}
+          alt="Background"
+          fill
+          className="object-cover blur-sm"
+          priority
+        />
+      </div>
       <div
         ref={sliderRef}
-        className="keen-slider w-full h-full py-10"
+        className="keen-slider w-full h-full py-10 z-2 relative px-10"
         onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+        onMouseLeave={() => {
+          setIsPaused(false);
+          setCurrentBgImage(images[0]);
+        }}
       >
         {images.map((image, index) => (
           <div key={`${image}-${index}`} className="keen-slider__slide">
@@ -58,6 +80,7 @@ const ProjectsSection = () => {
                 e.preventDefault();
                 animatePageOut("/trivia", router);
               }}
+              onMouseEnter={() => setCurrentBgImage(image)}
             >
               <motion.div
                 className="w-full h-full"

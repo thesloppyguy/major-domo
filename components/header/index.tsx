@@ -17,7 +17,7 @@ const HeaderSection = ({ handleToggle }: { handleToggle: () => void }) => {
             onClick={handleToggle}
             className="text-lg font-bold hover:cursor-pointer text-white"
           >
-            <SlideUp>[ABT]</SlideUp>
+            <SlideUp>[ABOUT]</SlideUp>
           </div>
           <div className="text-lg font-bold hidden md:flex gap-1">
             <SlideUp>

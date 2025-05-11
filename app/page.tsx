@@ -14,7 +14,8 @@ export default function Home() {
   const [color, setColor] = useState("#000000");
   const [sectionName, setSectionName] = useState<
     "THE\nJOURNEY\nBEGINS" | "ALONG\nTHE\nWAY" | "WORK\nDONE\n" | ""
-  >("");
+  >("THE\nJOURNEY\nBEGINS");
+
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -43,10 +44,8 @@ export default function Home() {
       return "";
     } else if (progress < 0.55) {
       return "THE\nJOURNEY\nBEGINS";
-    } else if (progress < 0.9) {
+    } else if (progress < 1) {
       return "ALONG\nTHE\nWAY";
-    } else if (progress >= 0.9) {
-      return "WORK\nDONE\n";
     } else {
       return "";
     }
