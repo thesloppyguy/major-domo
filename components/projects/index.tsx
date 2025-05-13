@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { InteractiveMarquee } from "./Marquee";
-import "wipe.css";
+// import "wipe.css";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
@@ -14,7 +14,7 @@ const ProjectsSection = () => {
   return (
     <div
       id="projects"
-      className="w-full overflow-hidden py-20 h-screen flex flex-col gap-4 items-center justify-center z-2 relative"
+      className="w-full overflow-hidden h-screen flex flex-col gap-4 items-center justify-center z-2 relative"
     >
       <div className="absolute inset-0 w-full h-full transition-opacity duration-500">
         <Image
@@ -30,7 +30,7 @@ const ProjectsSection = () => {
           <a
             key={`${project.name}-${index}`}
             href="#"
-            className="relative block min-w-[400px] h-[400px] overflow-hidden mr-2 group gap-3"
+            className="relative block min-w-[400px] h-[400px] overflow-hidden group gap-3"
             onClick={(e) => {
               e.preventDefault();
               animatePageOut("/trivia", router);
@@ -65,7 +65,7 @@ const ProjectsSection = () => {
                 priority={index < 2}
               />
               <div className="absolute top-0 left-0 w-full h-[60px] flex items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="text-white text-2xl rounded-full p-2 border-2 border-white bangers-regular">
+                <div className="text-white text-2xl bangers-regular">
                   {project.name}
                 </div>
               </div>
