@@ -18,7 +18,7 @@ const ProjectsSection = () => {
     >
       <div className="absolute inset-0 w-full h-full transition-opacity duration-500">
         <Image
-          src={currentProject.image.src}
+          src={currentProject.backgroundImage.src}
           alt="Background"
           fill
           className="object-cover blur-sm filter grayscale"
@@ -56,7 +56,7 @@ const ProjectsSection = () => {
               }}
             >
               <Image
-                src={project.image.src}
+                src={project.backgroundImage.src}
                 alt={`Project image ${index + 1}`}
                 className="object-cover w-full h-full transition-all duration-300 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
                 sizes="(max-width: 768px) 300px, 400px"

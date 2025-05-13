@@ -12,7 +12,6 @@ import SectionName from "@/components/SectionName";
 import FooterSection from "@/components/footer";
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
-  const [color, setColor] = useState("#000000");
   const [sectionName, setSectionName] = useState<
     "THE\nJOURNEY\nBEGINS" | "ALONG\nTHE\nWAY" | "WORK\nDONE\n" | ""
   >("THE\nJOURNEY\nBEGINS");
@@ -25,15 +24,12 @@ export default function Home() {
 
   const getBackgroundColor = () => {
     const progress = scrollYProgress.get();
-    // Start transition at 35% scroll
     if (progress < 0.35) {
-      return "rgb(0, 0, 0)"; // Stay black until 35%
+      return "rgb(0, 0, 0)";
     }
 
-    // Normalize progress to 0-1 range starting from 35%
     const normalizedProgress = (progress - 0.35) / 0.65;
 
-    // Transition from black to dark blue-gray
     return `rgb(${Math.round(12 * normalizedProgress)}, ${Math.round(
       22 * normalizedProgress
     )}, ${Math.round(33 * normalizedProgress)})`;
@@ -66,7 +62,6 @@ export default function Home() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setColor(getBackgroundColor());
       setSectionName(getSectionName());
     }, 100);
     return () => clearInterval(interval);
