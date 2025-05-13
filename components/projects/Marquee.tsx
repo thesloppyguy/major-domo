@@ -1,5 +1,4 @@
-"use client";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {
   motion,
   useSpring,
@@ -9,7 +8,28 @@ import {
 } from "framer-motion";
 import normalizeWheel from "normalize-wheel";
 import { useRafLoop } from "react-use";
-import { useWindowSize } from "@react-hook/window-size";
+
+// Custom hook to safely handle window size
+const useWindowSize = () => {
+  const [size, setSize] = useState<[number, number]>([0, 0]);
+
+  useEffect(() => {
+    const updateSize = () => {
+      setSize([window.innerWidth, window.innerHeight]);
+    };
+
+    // Set initial size
+    updateSize();
+
+    // Add event listener
+    window.addEventListener("resize", updateSize);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
+  return size;
+};
 
 type MarqueeItemProps = {
   children: React.ReactNode;
