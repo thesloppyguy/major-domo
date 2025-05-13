@@ -12,7 +12,7 @@ const ProjectsSection = () => {
   const [currentProject, setCurrentProject] = useState(projects[0]);
 
   return (
-    <div
+    <section
       id="projects"
       className="w-full overflow-hidden h-screen flex flex-col gap-4 items-center justify-center z-2 relative"
     >
@@ -21,7 +21,7 @@ const ProjectsSection = () => {
           src={currentProject.image.src}
           alt="Background"
           fill
-          className="object-cover blur-sm"
+          className="object-cover blur-sm filter grayscale"
           priority
         />
       </div>
@@ -73,7 +73,7 @@ const ProjectsSection = () => {
           </a>
         ))}
       </InteractiveMarquee>
-    </div>
+    </section>
   );
 };
 

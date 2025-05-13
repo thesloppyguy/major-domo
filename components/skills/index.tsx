@@ -51,7 +51,7 @@ const SkillsSection = () => {
   });
 
   return (
-    <section ref={targetRef} className="relative h-[300vh]">
+    <section ref={targetRef} className="relative h-[300vh]" id="skills">
       <div className="sticky top-0 h-screen overflow-hidden">
         <div className="h-full flex flex-col justify-center gap-8">
           {skills.map((skill, index) => (

@@ -5,12 +5,12 @@ import ParticleText from "../ParticleText";
 
 const HomeSection = () => {
   return (
-    <div
+    <section
       id="home"
       className="flex flex-col items-center justify-center h-screen relative z-1"
     >
       <ParticleText backgroundImage={backgroundImage2} />
-    </div>
+    </section>
   );
 };
 

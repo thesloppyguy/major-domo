@@ -2,27 +2,51 @@
 import React from "react";
 import Navbar from "./navbar";
 import SlideUp from "../base/slideUp";
-const HeaderSection = ({ handleToggle }: { handleToggle: () => void }) => {
+import { useRouter } from "next/navigation";
+const HeaderSection = ({
+  handleToggle,
+  isHome = true,
+}: {
+  handleToggle: () => void;
+  isHome?: boolean;
+}) => {
+  const router = useRouter();
   return (
-    <header
-      style={{ padding: "10px" }}
-      className="w-full z-50 fixed top-0 bg-gradient-to-b from-black/30 to-transparent font-sans"
-    >
+    <header className="w-full z-50 fixed top-0 bg-gradient-to-b from-black/30 to-transparent font-sans">
       <div className="flex justify-between p-4 text-center items-center">
-        <div className="text-white">
-          <div className="text-xl font-bold text-white text-left">SAHIL</div>
-          <div className="text-lg font-bold text-gray-400 text-left">
-            Available
-          </div>
+        <div className="text-white cursor-pointer">
+          {!isHome ? (
+            <div
+              className="text-md font-bold text-white text-left"
+              onClick={() => {
+                router.push("/#projects");
+              }}
+            >
+              BACK
+            </div>
+          ) : (
+            <>
+              <div
+                className="text-md font-bold text-white text-left"
+                onClick={() => {
+                  router.push("/");
+                }}
+              >
+                SAHIL
+              </div>
+              <div
+                className="text-md font-bold text-gray-400 text-left"
+                onClick={() => {
+                  router.push("/");
+                }}
+              >
+                Available
+              </div>
+            </>
+          )}
         </div>
         <div className="text-white flex items-center gap-2">
-          <div
-            onClick={handleToggle}
-            className="text-lg font-bold hover:cursor-pointer text-white"
-          >
-            <SlideUp>[ABOUT]</SlideUp>
-          </div>
-          <div className="text-lg font-bold hidden md:flex gap-1">
+          <div className="text-md font-bold hidden md:flex gap-1">
             <SlideUp>
               <div className="text-lg text-gray-400">
                 {new Date().toLocaleString("en-US", {
@@ -40,8 +64,13 @@ const HeaderSection = ({ handleToggle }: { handleToggle: () => void }) => {
               </div>
             </SlideUp>
           </div>
-          <div className="text-lg font-bold block md:hidden hover:cursor-pointer">
-            <Navbar />
+          <div
+            className="text-md font-bold block md:hidden hover:cursor-pointer"
+            onClick={handleToggle}
+          >
+            <SlideUp>
+              <div>MENU</div>
+            </SlideUp>
           </div>
         </div>
       </div>

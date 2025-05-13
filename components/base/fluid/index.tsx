@@ -30,8 +30,6 @@ export default class Fluid extends React.Component<FluidProps, FluidState> {
     };
   }
 
-  // Basically when the component mounts it adds a <script> tag containing
-  // the fluid sim logic which will execute once added, hooking into the <cavnas>
   componentDidMount() {
     this.scriptElement = document.createElement("script");
     this.scriptElement.src = "/js/script.js"; // Updated to use absolute path
