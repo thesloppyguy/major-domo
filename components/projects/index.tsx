@@ -5,41 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { animatePageOut } from "@/animations";
-
-const projects = [
-  {
-    name: "Lé Diff",
-    image: "https://images.unsplash.com/photo-1607385404764-380a5e06c7fe",
-  },
-  {
-    name: "Inventory Manager",
-    image: "https://images.unsplash.com/photo-1570086625846-f33f679eb4f5",
-  },
-  {
-    name: "T P 1",
-    image: "https://images.unsplash.com/photo-1627645835237-0743e52b991f",
-  },
-  {
-    name: "ATS",
-    image: "https://images.unsplash.com/photo-1648565496992-d1216d628508",
-  },
-  {
-    name: "A.I. Volution",
-    image: "https://images.unsplash.com/photo-1659117656969-b19d9a95a69c",
-  },
-  {
-    name: "Doc U",
-    image: "https://images.unsplash.com/photo-1714251638631-3f5f92585617",
-  },
-  {
-    name: "Neo Radio",
-    image: "https://images.unsplash.com/photo-1544273573-67fe0493b0ef",
-  },
-  {
-    name: "Media Stream",
-    image: "https://images.unsplash.com/photo-1613057389222-5c429f4ec162",
-  },
-];
+import { projects } from "@/constants";
 
 const ProjectsSection = () => {
   const router = useRouter();
@@ -52,7 +18,7 @@ const ProjectsSection = () => {
     >
       <div className="absolute inset-0 w-full h-full transition-opacity duration-500">
         <Image
-          src={currentProject.image}
+          src={currentProject.image.src}
           alt="Background"
           fill
           className="object-cover blur-sm"
@@ -90,7 +56,7 @@ const ProjectsSection = () => {
               }}
             >
               <Image
-                src={project.image}
+                src={project.image.src}
                 alt={`Project image ${index + 1}`}
                 className="object-cover w-full h-full transition-all duration-300 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
                 sizes="(max-width: 768px) 300px, 400px"

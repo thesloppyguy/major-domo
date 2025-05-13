@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import backgroundImage2 from "../../assets/background/Man.jpg";
+import backgroundImage2 from "@/assets/background/Man.jpg";
 import ParticleText from "../ParticleText";
 
 const HomeSection = () => {

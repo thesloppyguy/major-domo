@@ -89,7 +89,7 @@ export default function Home() {
         <HeaderSection handleToggle={handleToggle} />
         <SectionName sectionName={sectionName} />
         <HomeSection />
-        <ExperienceSection scrollYProgressGlobal={scrollYProgress} />
+        <ExperienceSection />
         <SkillsSection />
         <ProjectsSection />
       </main>
