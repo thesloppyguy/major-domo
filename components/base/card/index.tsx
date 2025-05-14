@@ -44,7 +44,7 @@ const Card = ({
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
         }}
-        className="flex flex-col relative -top-1/4 h-[500px] w-[1000px] rounded-[25px] p-[50px] origin-top"
+        className="flex flex-col relative -top-1/4 h-[700px] md:h-[500px] w-[1000px] rounded-[25px] p-[50px] origin-top"
       >
         {children}
       </motion.div>

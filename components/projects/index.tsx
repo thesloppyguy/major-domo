@@ -33,7 +33,7 @@ const ProjectsSection = () => {
             className="relative block min-w-[400px] h-[400px] overflow-hidden group gap-3"
             onClick={(e) => {
               e.preventDefault();
-              animatePageOut("/trivia", router);
+              animatePageOut(project.href, router);
             }}
             onMouseEnter={() => setCurrentProject(project)}
           >

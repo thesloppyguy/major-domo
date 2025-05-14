@@ -74,6 +74,7 @@ export const work = [
 export const projects = [
   {
     name: "TRIVIAL PURSUIT",
+    href: "/trivia",
     backgroundImage: TP1,
     about: "Built a live quiz platform with leaderboards, real-time scoring, and massive concurrency support.",
     year: "2025",
@@ -93,6 +94,7 @@ export const projects = [
   },
   {
     name: "THE DIFFERENCE",
+    href: "/lediff",
     backgroundImage: LeDiff,
     about: "The solution was designed to analyze NBFC financial documents to detect discrepancies between the original and the scanned version and provide a diff view of the changes in the document.",
     year: "2023",
@@ -112,6 +114,7 @@ export const projects = [
   },
   {
     name: "INVENTORY MANAGER",
+    href: "/inventory",
     backgroundImage: InventoryManager,
     about: "Built a centralized inventory system for managing stock across multiple retail sites with sync support.",
     year: "2023",
@@ -132,6 +135,7 @@ export const projects = [
   {
     name: "LOKI ATS",
     backgroundImage: ATS,
+    href: "/ats",
     about: "Designed and deployed a centralized recruitment and evaluation platform for L&T’s talent teams.",
     year: "2023",
     duration: "4 Months",
@@ -151,6 +155,7 @@ export const projects = [
   {
     name: "ONE LOKI",
     backgroundImage: AIVolution,
+    href: "/oneloki",
     about: "Created a Gen AI App Development Platform supporting agents, custom RAGs, low-code workflows, and API deployments, adopted by 12+ enterprise clients from India's 15 largest companies like HDBFS, Reliance, and SBI.",
     year: "2024",
     duration: "5 Months",
@@ -169,6 +174,7 @@ export const projects = [
   {
     name: "DOC U",
     backgroundImage: DocU,
+    href: "/docu",
     about: "Built an intelligent document parser that processes structured and unstructured documents into machine-readable formats using AI.",
     year: "2024",
     duration: "3 Months",
@@ -188,6 +194,7 @@ export const projects = [
   {
     name: "NEO RADIO",
     backgroundImage: NeoRadio,
+    href: "/neo-radio",
     about: "Created a mobile app that identifies songs from ambient sound and streams related internet radio stations.",
     year: "2024",
     duration: "4 Months",
@@ -207,6 +214,7 @@ export const projects = [
   {
     name: "MEDIA SERVER",
     backgroundImage: MediaStream,
+    href: "/media-stream",
     about: "Developed a lightweight media server to handle video/image processing, transcoding, and CDN integration for in house use.",
     year: "2023",
     duration: "1 Month",
