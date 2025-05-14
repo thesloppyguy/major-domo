@@ -16,6 +16,18 @@ import DocU from "@/assets/projects/headers/docu.jpeg";
 import NeoRadio from "@/assets/projects/headers/radio.jpeg";
 import MediaStream from "@/assets/projects/headers/media.jpeg";
 
+// LABS
+import Library from "@/assets/projects/labs/LIB HEADER.png";
+import SmartHome from "@/assets/projects/labs/Copy of Smart Home.png";
+import AutoClass from "@/assets/projects/labs/AutoClass.png";
+import Athenium from "@/assets/projects/labs/Athenium.png";
+import TelegramStorage from "@/assets/projects/labs/Telegram.png";
+import EmailSummarizer from "@/assets/projects/labs/Email.png";
+import StripeIntegration from "@/assets/projects/labs/Stripe.jpeg";
+import UnitTestScripting from "@/assets/projects/labs/TEST.png";
+import GithubActions from "@/assets/projects/labs/Github Actions.webp";
+import UIComponents from "@/assets/projects/labs/Components.gif";
+
 // ARCHITECTURE IMAGES
 import InvArch from "@/assets/projects/content/inv/Inv arch.svg";
 import TriviaArch from "@/assets/projects/content/trivia/Trivia.svg";
@@ -123,6 +135,7 @@ export const projects = [
     impact: "Supported over 500K+ concurrent users and multiple quizzes daily.",
     lesson: "Microservices are a great way to build scalable systems.",
     link: "https://github.com/thesloppyguy/TrivialPursuit",
+    architectureImage: TriviaArch,
     referenceImages: [],
   },
   {
@@ -146,6 +159,7 @@ export const projects = [
     lesson:
       "LLMs are not always the best solution, sometimes a custom model is better.",
     link: "https://github.com/thesloppyguy/TheDifference",
+    architectureImage: NeoRadioArch,
     referenceImages: [],
   },
   {
@@ -169,6 +183,7 @@ export const projects = [
     lesson: "Real-time sync is key to maintaining accurate inventory data.",
     link: "https://github.com/thesloppyguy/InventoryManager",
     referenceImages: [],
+    architectureImage: InvArch,
   },
   {
     name: "LOKI ATS",
@@ -201,6 +216,7 @@ export const projects = [
       "Domain-specific tuning is essential for candidate evaluation logic.",
     link: "https://github.com/thesloppyguy/LokiATS",
     referenceImages: [],
+    architectureImage: ATSArch,
   },
   {
     name: "ONE LOKI",
@@ -233,11 +249,13 @@ export const projects = [
     lesson:
       "Separation of concerns is key to building scalable and maintainable systems.",
     referenceImages: [],
+    architectureImage: OneLokiArch,
+    link: "https://github.com/thesloppyguy/OneLoki",
   },
   {
     name: "DOC U",
     backgroundImage: DocU,
-    href: "/docu",
+    href: "/doc-u",
     about:
       "Built an intelligent document parser that processes structured and unstructured documents into machine-readable formats using AI.",
     year: "2024",
@@ -266,30 +284,32 @@ export const projects = [
       "Hybrid models combining visual layout and semantic context yield more accurate document parsing.",
     link: "https://www.lokibots.ai/document-understanding",
     referenceImages: [],
+    architectureImage: DocUArch,
   },
-  {
-    name: "NEO RADIO",
-    backgroundImage: NeoRadio,
-    href: "/neo-radio",
-    about:
-      "Created a mobile app that identifies songs from ambient sound and streams related internet radio stations.",
-    year: "2024",
-    duration: "4 Months",
-    stack: ["Flutter", "Dart", "Firebase", "Deezer API", "Alan AI"],
-    vision:
-      "To build a lightweight open-source music recognition and discovery tool.",
-    role: "Solution Architect & Lead Developer",
-    highlights: [
-      "Integrated a local ML model for audio fingerprinting.",
-      "Built custom UI for music ID and instant streaming.",
-      "Used Firebase FireStore for track metadata and radio playlists.",
-    ],
-    impact: "Delivered recognition accuracy of over 85% for real-time queries.",
-    lesson:
-      "AI models can be trained to recognize specific patterns in audio data.",
-    link: "https://github.com/thesloppyguy/NeoRadio",
-    referenceImages: [],
-  },
+  // {
+  //   name: "NEO RADIO",
+  //   backgroundImage: NeoRadio,
+  //   href: "/neo-radio",
+  //   about:
+  //     "Created a mobile app that identifies songs from ambient sound and streams related internet radio stations.",
+  //   year: "2024",
+  //   duration: "4 Months",
+  //   stack: ["Flutter", "Dart", "Firebase", "Deezer API", "Alan AI"],
+  //   vision:
+  //     "To build a lightweight open-source music recognition and discovery tool.",
+  //   role: "Solution Architect & Lead Developer",
+  //   highlights: [
+  //     "Integrated a local ML model for audio fingerprinting.",
+  //     "Built custom UI for music ID and instant streaming.",
+  //     "Used Firebase FireStore for track metadata and radio playlists.",
+  //   ],
+  //   impact: "Delivered recognition accuracy of over 85% for real-time queries.",
+  //   lesson:
+  //     "AI models can be trained to recognize specific patterns in audio data.",
+  //   link: "https://github.com/thesloppyguy/NeoRadio",
+  //   referenceImages: [],
+  //   architectureImage: NeoRadioArch,
+  // },
   {
     name: "MEDIA SERVER",
     backgroundImage: MediaStream,
@@ -312,13 +332,14 @@ export const projects = [
       "Managing media workflows is a complex task, but with the right tools, it can be a breeze.",
     link: "https://github.com/thesloppyguy/MediaServer",
     referenceImages: [],
+    architectureImage: MediaArch,
   },
 ];
 
 export const labs = [
   {
     name: "LIBRARY MANAGEMENT SYSTEM",
-    backgroundImage: "",
+    backgroundImage: Library,
     about:
       "Developed a comprehensive digital library platform for schools, enabling efficient book management, user authentication, and real-time analytics to enhance student engagement and resource utilization.",
     year: "2018",
@@ -338,7 +359,7 @@ export const labs = [
   },
   {
     name: "SMART HOME",
-    backgroundImage: "",
+    backgroundImage: SmartHome,
     about:
       "Engineered an IoT system enabling users to control home appliances via WiFi, featuring real-time status updates and command logging through a mobile application.",
     year: "2019",
@@ -359,7 +380,7 @@ export const labs = [
   },
   {
     name: "ATHENEUM",
-    backgroundImage: "",
+    backgroundImage: Athenium,
     about:
       "The solution strived to provide a virtual solution to eduction amid the pandemic.",
     year: "2020",
@@ -380,7 +401,7 @@ export const labs = [
   },
   {
     name: "PROXY MATE",
-    backgroundImage: "",
+    backgroundImage: AutoClass,
     about:
       "Developed an automated attendance system, where a script logs into class and marks attendance.",
     year: "2020",
@@ -400,7 +421,7 @@ export const labs = [
   },
   {
     name: "TELEGRAM STORAGE",
-    backgroundImage: "",
+    backgroundImage: TelegramStorage,
     about:
       "Implemented a solution leveraging Telegram's API to store and retrieve large volumes of data, offering a cost-effective alternative to traditional cloud storage.",
     year: "2022",
@@ -420,7 +441,7 @@ export const labs = [
   },
   {
     name: "EMAIL SUMMARIZER",
-    backgroundImage: "",
+    backgroundImage: EmailSummarizer,
     about:
       "Developed a script that summarizes emails in bulk and extracts key information using NLP and routes queries to respective departments.",
     year: "2022",
@@ -436,7 +457,7 @@ export const labs = [
   },
   {
     name: "STRIPE INTEGRATION",
-    backgroundImage: "",
+    backgroundImage: StripeIntegration,
     about:
       "Integrated Stripe payment solutions into various applications, enabling seamless transactions, subscription management, and financial reporting.",
     year: "2024",
@@ -457,7 +478,7 @@ export const labs = [
   },
   {
     name: "UNIT TEST SCRIPTING",
-    backgroundImage: "",
+    backgroundImage: UnitTestScripting,
     about:
       "Created automated testing scripts to ensure the reliability and stability of applications, facilitating continuous integration and deployment.",
     year: "2023",
@@ -479,7 +500,7 @@ export const labs = [
   },
   {
     name: "GITHUB ACTIONS",
-    backgroundImage: "",
+    backgroundImage: GithubActions,
     about:
       "Implemented custom GitHub workflows to automate development processes, including code linting, testing, and deployment, enhancing team productivity.",
     year: "2023",
@@ -500,8 +521,8 @@ export const labs = [
     referenceImages: [],
   },
   {
-    name: "UI PROPS",
-    backgroundImage: "",
+    name: "UI COMPONENTS",
+    backgroundImage: UIComponents,
     about:
       "Enhanced user interfaces across multiple applications, focusing on responsiveness, accessibility, and aesthetic consistency to improve user experience.",
     year: "2024",

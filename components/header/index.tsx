@@ -19,7 +19,7 @@ const HeaderSection = ({
             <div
               className="text-md font-bold text-white text-left"
               onClick={() => {
-                router.push("/#projects");
+                router.push("/");
               }}
             >
               BACK
