@@ -238,7 +238,7 @@ export const projects = [
     ],
     vision:
       "To consolidate Chatbot and AI development workflows, logs, builds, and metrics in one pane.",
-    role: "Lead Developer & Solution Architect",
+    role: "Sole Developer & Solution Architect",
     highlights: [
       "Developed a low-code workflow builder for custom RAGs.",
       "Built a multi-agent platform supporting custom agents and workflows.",

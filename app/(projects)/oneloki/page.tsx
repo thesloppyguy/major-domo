@@ -8,7 +8,7 @@ import { projects } from "@/constants";
 import { LinkIcon } from "lucide-react";
 import AIModels from "@/assets/projects/content/oneloki/Models.gif";
 import Stats from "@/assets/projects/content/oneloki/STATS.gif";
-
+import Title from "@/assets/projects/content/oneloki/OneLokiTitle.gif";
 const Trivia = () => {
   const container = useRef(null);
   const currentProject = projects[4];
@@ -78,13 +78,17 @@ const Trivia = () => {
               <span className="text-gray-400 font-semibold">ABOUT</span>
               <div className="text-white">{currentProject.about}</div>
             </div>
+            <div>
+              <span className="text-gray-400 font-semibold">ROLE</span>
+              <div className="text-white">{currentProject.role}</div>
+            </div>
           </div>
           <div className="relative w-full md:w-[60%] h-[200px] md:h-full rounded-[25px] overflow-hidden flex items-center justify-center">
             <motion.div className="w-full h-full" style={{ scale: 1 }}>
               <Image
                 fill
-                src={AIModels}
-                alt="project image"
+                src={Title}
+                alt="OneLoki Title"
                 className="object-cover"
               />
             </motion.div>
@@ -108,10 +112,6 @@ const Trivia = () => {
               </div>
             )}
             <div>
-              <span className="text-black font-semibold">ROLE</span>
-              <div className="text-gray-700">{currentProject.role}</div>
-            </div>
-            <div>
               <span className="text-black font-semibold">STACK</span>
               <div className="text-gray-700">
                 {Array.isArray(currentProject.stack)
@@ -119,6 +119,17 @@ const Trivia = () => {
                   : currentProject.stack}
               </div>
             </div>
+            {currentProject.highlights &&
+              currentProject.highlights.length > 0 && (
+                <div>
+                  <span className="text-black font-semibold">HIGHLIGHTS</span>
+                  <ul className="text-gray-700 list-disc ml-5">
+                    {currentProject.highlights.map((h, idx) => (
+                      <li key={idx}>{h}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
           </div>
           <div className="relative w-full md:w-[60%] h-[200px] md:h-full overflow-hidden flex items-center justify-center">
             <motion.div className="w-full h-full" style={{ scale: 1 }}>
@@ -140,19 +151,6 @@ const Trivia = () => {
       >
         <div className="flex flex-col md:flex-row h-full gap-6 md:gap-[50px] z-10">
           <div className="w-full md:w-[40%] relative flex flex-col gap-4 mb-6 md:mb-0">
-            {currentProject.highlights &&
-              currentProject.highlights.length > 0 && (
-                <div>
-                  <span className="text-gray-400 font-semibold">
-                    HIGHLIGHTS
-                  </span>
-                  <ul className="text-white list-disc ml-5">
-                    {currentProject.highlights.map((h, idx) => (
-                      <li key={idx}>{h}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
             {currentProject.impact && (
               <div>
                 <span className="text-gray-400 font-semibold">IMPACT</span>
