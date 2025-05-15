@@ -250,7 +250,7 @@ export const projects = [
       "Separation of concerns is key to building scalable and maintainable systems.",
     referenceImages: [],
     architectureImage: OneLokiArch,
-    link: "https://github.com/thesloppyguy/OneLoki",
+    link: "https://lokify-front.vercel.app/signin",
   },
   {
     name: "DOC U",
