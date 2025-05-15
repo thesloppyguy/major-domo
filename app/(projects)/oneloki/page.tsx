@@ -9,6 +9,9 @@ import { LinkIcon } from "lucide-react";
 import AIModels from "@/assets/projects/content/oneloki/Models.gif";
 import Stats from "@/assets/projects/content/oneloki/STATS.gif";
 import Title from "@/assets/projects/content/oneloki/OneLokiTitle.gif";
+import CREATE from "@/assets/projects/content/oneloki/CREATE KNOWLEDGE BASE.gif";
+import MULTI from "@/assets/projects/content/oneloki/MULTI TENANT.gif";
+
 const Trivia = () => {
   const container = useRef(null);
   const currentProject = projects[4];
@@ -134,7 +137,7 @@ const Trivia = () => {
           <div className="relative w-full md:w-[60%] h-[200px] md:h-full overflow-hidden flex items-center justify-center">
             <motion.div className="w-full h-full" style={{ scale: 1 }}>
               <Image
-                src={Stats}
+                src={CREATE}
                 alt="project image"
                 className="aspect-[16/9]"
               />
@@ -166,12 +169,10 @@ const Trivia = () => {
           </div>
           <div className="relative w-full md:w-[60%] h-[200px] md:h-full rounded-[25px] overflow-hidden flex items-center justify-center">
             <motion.div className="w-full h-full" style={{ scale: 1 }}>
-              <video
-                src="assets\projects\content\oneloki\Platform.mp4"
-                autoPlay
-                muted
-                loop
-                className="w-full h-full aspect-[9/16]"
+              <Image
+                src={MULTI}
+                alt="project image"
+                className="bg-white rounded-[25px] aspect-[16/9]"
               />
             </motion.div>
           </div>
